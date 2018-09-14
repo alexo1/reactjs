@@ -4,10 +4,11 @@ import React from 'react'
 import {render} from 'react-dom'
 import FilteredMultiSelect from '../../src/index'
 
+import ButtonAppBar from '../components/ui/Appbar'
 import CULTURE_SHIPS from './ships.json'
-
 import COUNTY from './county.json'
-import subcounty from './sub-county.json'
+import SUBCOUNTY from './subcounty.json'
+
 const BOOTSTRAP_CLASSES = {
   filter: 'form-control',
   select: 'form-control',
@@ -166,7 +167,7 @@ class County extends React.Component {
   }
 }
 
-class subCounty extends React.Component {
+class Subcounty extends React.Component {
   state = {
     selectedOptions: []
   }
@@ -191,7 +192,7 @@ class subCounty extends React.Component {
           buttonText="Add"
           classNames={BOOTSTRAP_CLASSES}
           onChange={this.handleSelect}
-          options={subcounty}
+          options={SUBCOUNTY}
           selectedOptions={selectedOptions}
           textProp="name"
           valueProp="id"
@@ -216,56 +217,7 @@ class subCounty extends React.Component {
   }
 }
 
-// class NoFilter extends React.Component {
-//   state = {
-//     selectedOptions: []
-//   }
 
-//   handleDeselect(index) {
-//     var selectedOptions = this.state.selectedOptions.slice()
-//     selectedOptions.splice(index, 1)
-//     this.setState({selectedOptions})
-//   }
-
-//   handleClearSelection = (e) => {
-//     this.setState({selectedOptions: []})
-//   }
-//   handleSelectionChange = (selectedOptions) => {
-//     selectedOptions.sort((a, b) => a.id - b.id)
-//     this.setState({selectedOptions})
-//   }
-
-//   render() {
-//     var {selectedOptions} = this.state
-//     return <div className="row">
-//       <div className="col-md-5">
-//         <FilteredMultiSelect
-//           classNames={BOOTSTRAP_CLASSES}
-//           onChange={this.handleSelectionChange}
-//           options={FRUIT}
-//           selectedOptions={selectedOptions}
-//           textProp="name"
-//           valueProp="id"
-//           showFilter={false}
-//         />
-//       </div>
-//       <div className="col-md-5">
-//         {selectedOptions.length === 0 && <p>(nothing selected yet)</p>}
-//         {selectedOptions.length > 0 && <ol>
-//           {selectedOptions.map((fruit, i) => <li key={fruit.id}>
-//             {`${fruit.name} `}
-//             <span style={{cursor: 'pointer'}} onClick={() => this.handleDeselect(i)}>
-//               &times;
-//             </span>
-//           </li>)}
-//         </ol>}
-//         {selectedOptions.length > 0 && <button style={{marginLeft: 20}} className="btn btn-default" onClick={this.handleClearSelection}>
-//           Clear Selection
-//         </button>}
-//       </div>
-//     </div>
-//   }
-// }
 
 class App extends React.Component {
   render() {
@@ -274,6 +226,7 @@ class App extends React.Component {
         <div className="col-md-12">
           {/* <h1><a href="https://github.com/insin/react-filtered-multiselect">React &lt;FilteredMultiSelect/&gt;</a></h1>
           <p className="lead">A reusable React component for making and adding to selections using a filtered multi-select.</p> */}
+          <ButtonAppBar />
         </div>
       </div>
 
@@ -297,7 +250,7 @@ class App extends React.Component {
       <hr />
 
       <h2>Sub-County</h2>
-      <AddRemoveSelection />
+        <Subcounty />
       <hr />
 
       <h2>List Facility</h2>
