@@ -17,6 +17,8 @@
     "test": "npm run lint"
   },
   "dependencies": {
+    "@material-ui/core": "^3.0.3",
+    "@material-ui/icons": "^3.0.1",
     "prop-types": "^15.5.7"
   },
   "peerDependencies": {

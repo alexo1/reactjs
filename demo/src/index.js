@@ -17,56 +17,7 @@ const BOOTSTRAP_CLASSES = {
   buttonActive: 'btn btn btn-block btn-primary',
 }
 
-// class BasicSelection extends React.Component {
-//   state = {
-//     selectedOptions: []
-//   }
 
-//   handleDeselect(index) {
-//     var selectedOptions = this.state.selectedOptions.slice()
-//     selectedOptions.splice(index, 1)
-//     this.setState({selectedOptions})
-//   }
-
-//   handleClearSelection = (e) => {
-//     this.setState({selectedOptions: []})
-//   }
-//   handleSelectionChange = (selectedOptions) => {
-//     selectedOptions.sort((a, b) => a.id - b.id)
-//     this.setState({selectedOptions})
-//   }
-
-//   render() {
-//     var {selectedOptions} = this.state
-//     return <div className="row">
-//       <div className="col-md-5">
-//         <FilteredMultiSelect
-//           classNames={BOOTSTRAP_CLASSES}
-//           onChange={this.handleSelectionChange}
-//           options={CULTURE_SHIPS}
-//           selectedOptions={selectedOptions}
-//           textProp="name"
-//           valueProp="id"
-//         />
-//         <p className="help-block">Press Enter when there's only one matching item to select it.</p>
-//       </div>
-//       <div className="col-md-5">
-//         {selectedOptions.length === 0 && <p>(nothing selected yet)</p>}
-//         {selectedOptions.length > 0 && <ol>
-//           {selectedOptions.map((ship, i) => <li key={ship.id}>
-//             {`${ship.name} `}
-//             <span style={{cursor: 'pointer'}} onClick={() => this.handleDeselect(i)}>
-//               &times;
-//             </span>
-//           </li>)}
-//         </ol>}
-//         {selectedOptions.length > 0 && <button style={{marginLeft: 20}} className="btn btn-default" onClick={this.handleClearSelection}>
-//           Clear Selection
-//         </button>}
-//       </div>
-//     </div>
-//   }
-// }
 
 class AddRemoveSelection extends React.Component {
   state = {
