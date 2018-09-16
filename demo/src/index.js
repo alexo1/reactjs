@@ -8,6 +8,7 @@ import ButtonAppBar from '../components/ui/Appbar'
 import CULTURE_SHIPS from './ships.json'
 import COUNTY from './county.json'
 import SUBCOUNTY from './subcounty.json'
+import FACILITYTYPE from './facilityType.json'
 
 const BOOTSTRAP_CLASSES = {
   filter: 'form-control',
@@ -217,6 +218,55 @@ class Subcounty extends React.Component {
   }
 }
 
+class Facilitytype extends React.Component {
+  state = {
+    selectedOptions: []
+  }
+
+  handleDeselect = (deselectedOptions) => {
+    var selectedOptions = this.state.selectedOptions.slice()
+    deselectedOptions.forEach(option => {
+      selectedOptions.splice(selectedOptions.indexOf(option), 1)
+    })
+    this.setState({selectedOptions})
+  }
+  handleSelect = (selectedOptions) => {
+    selectedOptions.sort((a, b) => a.id - b.id)
+    this.setState({selectedOptions})
+  }
+
+  render() {
+    var {selectedOptions} = this.state
+    return <div className="row">
+      <div className="col-md-5">
+        <FilteredMultiSelect
+          buttonText="Add"
+          classNames={BOOTSTRAP_CLASSES}
+          onChange={this.handleSelect}
+          options={FACILITYTYPE}
+          selectedOptions={selectedOptions}
+          textProp="name"
+          valueProp="id"
+        />
+      </div>
+      <div className="col-md-5">
+        <FilteredMultiSelect
+          buttonText="Remove"
+          classNames={{
+            filter: 'form-control',
+            select: 'form-control',
+            button: 'btn btn btn-block btn-default',
+            buttonActive: 'btn btn btn-block btn-danger'
+          }}
+          onChange={this.handleDeselect}
+          options={selectedOptions}
+          textProp="name"
+          valueProp="id"
+        />
+      </div>
+    </div>
+  }
+}
 
 
 class App extends React.Component {
@@ -253,8 +303,8 @@ class App extends React.Component {
         <Subcounty />
       <hr />
 
-      <h2>List Facility</h2>
-      <AddRemoveSelection />
+      <h2>Facility Type</h2>
+      <Facilitytype />
       <hr />
       {/* <hr/>
 
